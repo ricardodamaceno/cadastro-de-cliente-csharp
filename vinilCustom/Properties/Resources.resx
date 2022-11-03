@@ -160,8 +160,8 @@
   <data name="remover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\remover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="categoria1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\categoria1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="funcionarios2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\funcionarios1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="novo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\novo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -181,8 +181,11 @@
   <data name="livros1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\livros1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="funcionarios2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\funcionarios1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="vinilLogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\vinilLogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="categoria1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\categoria1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="eng" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\eng.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -211,7 +214,7 @@
   <data name="vinilCustom RD" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\vinilCustom RD.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="vinilLogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\vinilLogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="imprimindo-contorno-do-botao" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imprimindo-contorno-do-botao.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

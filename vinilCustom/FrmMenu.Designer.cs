@@ -127,6 +127,7 @@
             this.btnCaixa.TabIndex = 9;
             this.btnCaixa.Text = "Caixa";
             this.btnCaixa.UseVisualStyleBackColor = true;
+            this.btnCaixa.Visible = false;
             // 
             // btnPedido
             // 
@@ -144,6 +145,7 @@
             this.btnPedido.TabIndex = 8;
             this.btnPedido.Text = "Pedido";
             this.btnPedido.UseVisualStyleBackColor = true;
+            this.btnPedido.Visible = false;
             // 
             // btnAutores
             // 
@@ -161,6 +163,7 @@
             this.btnAutores.TabIndex = 7;
             this.btnAutores.Text = "Autores";
             this.btnAutores.UseVisualStyleBackColor = true;
+            this.btnAutores.Visible = false;
             // 
             // btnEditora
             // 
@@ -178,6 +181,7 @@
             this.btnEditora.TabIndex = 6;
             this.btnEditora.Text = "Editora";
             this.btnEditora.UseVisualStyleBackColor = true;
+            this.btnEditora.Visible = false;
             // 
             // btnCategoria
             // 
@@ -195,6 +199,7 @@
             this.btnCategoria.TabIndex = 5;
             this.btnCategoria.Text = "Categoria";
             this.btnCategoria.UseVisualStyleBackColor = true;
+            this.btnCategoria.Visible = false;
             // 
             // btnLivros
             // 
@@ -212,6 +217,7 @@
             this.btnLivros.TabIndex = 4;
             this.btnLivros.Text = "Livros";
             this.btnLivros.UseVisualStyleBackColor = true;
+            this.btnLivros.Visible = false;
             // 
             // btnFone
             // 
@@ -229,6 +235,7 @@
             this.btnFone.TabIndex = 3;
             this.btnFone.Text = "Telefones";
             this.btnFone.UseVisualStyleBackColor = true;
+            this.btnFone.Visible = false;
             // 
             // btnCliente
             // 

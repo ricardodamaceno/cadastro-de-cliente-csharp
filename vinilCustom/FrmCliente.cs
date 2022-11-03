@@ -38,10 +38,14 @@ namespace vinilCustom
         //metodos para quando clicar iniciar obrigatoriamente no começo
         private void maskData_Click(object sender, EventArgs e)
         {
-            if (maskData.Text == "")
+            if (maskData.Text.Length < 7)
             {
                 SendKeys.Send("{Home}");
             }
+            //else
+            //{
+            //    MessageBox.Show(maskData.Text.Length.ToString()); 
+            //}
             
         }
         private void txtPlaca_Click(object sender, EventArgs e)
@@ -112,10 +116,45 @@ namespace vinilCustom
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Informe um valor válid");
+                    MessageBox.Show("Informe um valor válido");
                 }
                 
             }
+        }
+
+        private void txtValor_Enter(object sender, EventArgs e)
+        {
+            if (txtValor.Text != "")
+            {
+                try
+                {
+                    double valor = Convert.ToDouble(txtValor.Text);
+                    txtValor.Text = String.Format("{0:c}", valor);//isso transforma em dinheiro
+                    txtValor.Text = txtValor.Text.Replace("R$ ", "");//isso tira o cifrão
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Informe um valor válido");
+                }
+            }
+        }
+
+        //validação de data
+        private void maskData_Leave(object sender, EventArgs e)
+        {
+            DateTime valor;
+            var convertido = DateTime
+                .TryParseExact(maskData.Text, "dd/MM/yyyy",
+                                CultureInfo.InvariantCulture,
+                                DateTimeStyles.None,
+                                out valor);
+            if (convertido == false)
+            {
+                MessageBox.Show("Informe uma data válida");
+                maskData.Focus();
+            }
+
         }
 
         private void desabilitaCampos()
@@ -183,6 +222,7 @@ namespace vinilCustom
 
         private void limparCampos()
         {
+            lblCod.Text = "";
             txtNome.Clear();
             txtEmail.Clear();
             txtLogradouro.Clear();
@@ -330,10 +370,10 @@ namespace vinilCustom
                     cm.Parameters.Add("@cpf", SqlDbType.Char).Value = cpf;
                     cm.Parameters.Add("@uf", SqlDbType.Char).Value = uf;
                     cm.Parameters.Add("@telefone", SqlDbType.Char).Value = telefone;
-                    cm.Parameters.Add("@data", SqlDbType.Char).Value = data;
+                    cm.Parameters.Add("@data", SqlDbType.Date).Value = data;
                     cm.Parameters.Add("@placa", SqlDbType.VarChar).Value = placa;
                     cm.Parameters.Add("@garantia", SqlDbType.VarChar).Value = garantia;
-                    cm.Parameters.Add("@valor", SqlDbType.Char).Value = data;
+                    cm.Parameters.Add("@valor", SqlDbType.Char).Value = valor;
                     cm.Parameters.Add("@servico", SqlDbType.VarChar).Value = servico;
 
                     cm.Parameters.AddWithValue("@cd", 0).Direction = ParameterDirection.Output; //isso exporta o código do cliente
@@ -358,7 +398,7 @@ namespace vinilCustom
                     cm.Parameters.Clear();
 
                     MessageBox.Show("Os dados foram gravados com sucesso!", "Inserção de dados concluído.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    limparCampos();
+                    //limparCampos();
                     desabilitaCampos();
                 }
                 catch (Exception ex)
@@ -467,7 +507,7 @@ namespace vinilCustom
         private void dgvCliente_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             carregaCliente();
-           
+            
         }
 
         private void btnAlterar_Click(object sender, EventArgs e)
@@ -585,10 +625,10 @@ namespace vinilCustom
                     cm.Parameters.Add("@cpf", SqlDbType.Char).Value = cpf;
                     cm.Parameters.Add("@uf", SqlDbType.Char).Value = uf;
                     cm.Parameters.Add("@telefone", SqlDbType.Char).Value = telefone;
-                    cm.Parameters.Add("@data", SqlDbType.Char).Value = data;
+                    cm.Parameters.Add("@data", SqlDbType.Date).Value = data;
                     cm.Parameters.Add("@placa", SqlDbType.VarChar).Value = placa;
                     cm.Parameters.Add("@garantia", SqlDbType.VarChar).Value = garantia;
-                    cm.Parameters.Add("@valor", SqlDbType.Char).Value = data;
+                    cm.Parameters.Add("@valor", SqlDbType.Char).Value = valor;
                     cm.Parameters.Add("@servico", SqlDbType.VarChar).Value = servico;
                     cm.Parameters.Add("@cd", SqlDbType.Int).Value = cd;
 
@@ -712,6 +752,7 @@ namespace vinilCustom
                         //Faz as substituições
                         documento.ReplaceText("#nome", txtNome.Text);
                         documento.ReplaceText("#cpf", maskCpf.Text);
+                        documento.ReplaceText("#email", txtEmail.Text);
                         documento.ReplaceText("#data", maskData.Text);
                         documento.ReplaceText("#placa", txtPlaca.Text);
                         documento.ReplaceText("#serviço", txtServico.Text);
@@ -764,7 +805,17 @@ namespace vinilCustom
             //}
         }
 
-        
+        private void tsmG90_Click(object sender, EventArgs e)
+        {
+            txtServico.Text += tsmG90.Text;
+            txtServico.Text += " ";
+        }
+
+        private void tsmG40_Click(object sender, EventArgs e)
+        {
+            txtServico.Text += tsmG40.Text;
+            txtServico.Text += " ";
+        }
     }
 
 }
