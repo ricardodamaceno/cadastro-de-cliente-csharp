@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.lblCodigo = new System.Windows.Forms.Label();
             this.lblCod = new System.Windows.Forms.Label();
@@ -84,10 +85,18 @@
             this.tsmFrontal = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmParabrisa = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmTrazeiro = new System.Windows.Forms.ToolStripMenuItem();
+            this.dgvExporta = new System.Windows.Forms.DataGridView();
+            this.menuStrip3 = new System.Windows.Forms.MenuStrip();
+            this.tsmPPF = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCliente)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvExporta)).BeginInit();
+            this.menuStrip3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -148,7 +157,7 @@
             // label5
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label5.Location = new System.Drawing.Point(62, 152);
@@ -198,10 +207,19 @@
             // 
             this.dgvCliente.AllowUserToAddRows = false;
             this.dgvCliente.AllowUserToDeleteRows = false;
+            this.dgvCliente.AllowUserToOrderColumns = true;
             this.dgvCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvCliente.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCliente.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCliente.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvCliente.Location = new System.Drawing.Point(44, 457);
             this.dgvCliente.MultiSelect = false;
             this.dgvCliente.Name = "dgvCliente";
@@ -210,7 +228,7 @@
             this.dgvCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCliente.Size = new System.Drawing.Size(416, 67);
             this.dgvCliente.StandardTab = true;
-            this.dgvCliente.TabIndex = 19;
+            this.dgvCliente.TabIndex = 24;
             this.dgvCliente.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvCliente_MouseDoubleClick);
             // 
             // groupBox1
@@ -223,7 +241,7 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.groupBox1.Size = new System.Drawing.Size(205, 54);
-            this.groupBox1.TabIndex = 13;
+            this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pesquisa por Cliente";
             // 
@@ -234,7 +252,7 @@
             this.txtBuscaCliente.Location = new System.Drawing.Point(3, 29);
             this.txtBuscaCliente.Name = "txtBuscaCliente";
             this.txtBuscaCliente.Size = new System.Drawing.Size(195, 25);
-            this.txtBuscaCliente.TabIndex = 13;
+            this.txtBuscaCliente.TabIndex = 23;
             this.txtBuscaCliente.TextChanged += new System.EventHandler(this.txtBuscaCliente_TextChanged);
             // 
             // btnNovo
@@ -248,7 +266,7 @@
             this.btnNovo.Location = new System.Drawing.Point(510, 17);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(142, 70);
-            this.btnNovo.TabIndex = 14;
+            this.btnNovo.TabIndex = 17;
             this.btnNovo.Text = "Novo";
             this.btnNovo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnNovo.UseVisualStyleBackColor = true;
@@ -265,7 +283,7 @@
             this.btnGravar.Location = new System.Drawing.Point(510, 93);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(142, 70);
-            this.btnGravar.TabIndex = 15;
+            this.btnGravar.TabIndex = 18;
             this.btnGravar.Text = "Gravar";
             this.btnGravar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGravar.UseVisualStyleBackColor = true;
@@ -282,7 +300,7 @@
             this.btnAlterar.Location = new System.Drawing.Point(510, 169);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(142, 70);
-            this.btnAlterar.TabIndex = 16;
+            this.btnAlterar.TabIndex = 19;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAlterar.UseVisualStyleBackColor = true;
@@ -299,7 +317,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(510, 397);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(142, 70);
-            this.btnCancelar.TabIndex = 18;
+            this.btnCancelar.TabIndex = 22;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -414,7 +432,7 @@
             this.txtBairro.MaxLength = 20;
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(126, 25);
-            this.txtBairro.TabIndex = 5;
+            this.txtBairro.TabIndex = 7;
             // 
             // label12
             // 
@@ -437,7 +455,7 @@
             this.txtNumero.MaxLength = 5;
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(126, 25);
-            this.txtNumero.TabIndex = 7;
+            this.txtNumero.TabIndex = 9;
             this.txtNumero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumero_KeyPress);
             // 
             // lblCpf
@@ -472,7 +490,7 @@
             this.maskTelefone.Mask = "(00) 00000-0000";
             this.maskTelefone.Name = "maskTelefone";
             this.maskTelefone.Size = new System.Drawing.Size(126, 23);
-            this.maskTelefone.TabIndex = 11;
+            this.maskTelefone.TabIndex = 13;
             this.maskTelefone.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.maskTelefone.Click += new System.EventHandler(this.maskTelefone_Click);
             // 
@@ -484,19 +502,19 @@
             this.maskCpf.Mask = "000.000.000-00";
             this.maskCpf.Name = "maskCpf";
             this.maskCpf.Size = new System.Drawing.Size(126, 23);
-            this.maskCpf.TabIndex = 9;
+            this.maskCpf.TabIndex = 11;
             this.maskCpf.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.maskCpf.Click += new System.EventHandler(this.maskCpf_Click);
             // 
             // maskCep
             // 
             this.maskCep.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.maskCep.Location = new System.Drawing.Point(111, 152);
             this.maskCep.Mask = "00000-000";
             this.maskCep.Name = "maskCep";
             this.maskCep.Size = new System.Drawing.Size(86, 23);
-            this.maskCep.TabIndex = 3;
+            this.maskCep.TabIndex = 4;
             this.maskCep.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.maskCep.Click += new System.EventHandler(this.maskCep_Click);
             this.maskCep.Leave += new System.EventHandler(this.maskCep_Leave);
@@ -549,7 +567,7 @@
             this.exportar.Location = new System.Drawing.Point(510, 321);
             this.exportar.Name = "exportar";
             this.exportar.Size = new System.Drawing.Size(142, 70);
-            this.exportar.TabIndex = 41;
+            this.exportar.TabIndex = 21;
             this.exportar.Text = "EXPORTAR";
             this.exportar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.exportar.UseVisualStyleBackColor = true;
@@ -566,7 +584,7 @@
             this.imprimir.Location = new System.Drawing.Point(510, 245);
             this.imprimir.Name = "imprimir";
             this.imprimir.Size = new System.Drawing.Size(142, 70);
-            this.imprimir.TabIndex = 42;
+            this.imprimir.TabIndex = 20;
             this.imprimir.Text = "IMPRIMIR";
             this.imprimir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.imprimir.UseVisualStyleBackColor = true;
@@ -580,7 +598,7 @@
             this.maskData.Mask = "00/00/0000";
             this.maskData.Name = "maskData";
             this.maskData.Size = new System.Drawing.Size(86, 23);
-            this.maskData.TabIndex = 43;
+            this.maskData.TabIndex = 3;
             this.maskData.ValidatingType = typeof(System.DateTime);
             this.maskData.Click += new System.EventHandler(this.maskData_Click);
             this.maskData.Leave += new System.EventHandler(this.maskData_Leave);
@@ -623,7 +641,7 @@
             this.cboGarantia.Location = new System.Drawing.Point(111, 302);
             this.cboGarantia.Name = "cboGarantia";
             this.cboGarantia.Size = new System.Drawing.Size(126, 23);
-            this.cboGarantia.TabIndex = 47;
+            this.cboGarantia.TabIndex = 14;
             // 
             // label13
             // 
@@ -648,8 +666,7 @@
             this.txtServico.Multiline = true;
             this.txtServico.Name = "txtServico";
             this.txtServico.Size = new System.Drawing.Size(349, 25);
-            this.txtServico.TabIndex = 51;
-            this.txtServico.Text = "Insulfilm ";
+            this.txtServico.TabIndex = 16;
             // 
             // label16
             // 
@@ -666,22 +683,20 @@
             // 
             // txtValor
             // 
-            this.txtValor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtValor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtValor.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtValor.Location = new System.Drawing.Point(334, 302);
             this.txtValor.MaxLength = 10;
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(126, 25);
-            this.txtValor.TabIndex = 53;
+            this.txtValor.TabIndex = 15;
             this.txtValor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValor_KeyPress);
             this.txtValor.Leave += new System.EventHandler(this.txtValor_Leave);
             // 
             // label15
             // 
-            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -700,7 +715,7 @@
             this.txtPlaca.MaxLength = 7;
             this.txtPlaca.Name = "txtPlaca";
             this.txtPlaca.Size = new System.Drawing.Size(86, 25);
-            this.txtPlaca.TabIndex = 55;
+            this.txtPlaca.TabIndex = 5;
             this.txtPlaca.Click += new System.EventHandler(this.txtPlaca_Click);
             // 
             // menuStrip1
@@ -708,7 +723,7 @@
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmInsulfiml});
-            this.menuStrip1.Location = new System.Drawing.Point(19, 362);
+            this.menuStrip1.Location = new System.Drawing.Point(16, 362);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(116, 29);
             this.menuStrip1.TabIndex = 56;
@@ -725,20 +740,19 @@
             this.tsmInsulfiml.Name = "tsmInsulfiml";
             this.tsmInsulfiml.Size = new System.Drawing.Size(108, 25);
             this.tsmInsulfiml.Text = "Insulfilm ▼";
+            this.tsmInsulfiml.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.tsmInsulfiml_DropDownItemClicked);
             // 
             // tsmG90
             // 
             this.tsmG90.Name = "tsmG90";
             this.tsmG90.Size = new System.Drawing.Size(180, 26);
             this.tsmG90.Text = "G90";
-            this.tsmG90.Click += new System.EventHandler(this.tsmG90_Click);
             // 
             // tsmG40
             // 
             this.tsmG40.Name = "tsmG40";
             this.tsmG40.Size = new System.Drawing.Size(180, 26);
             this.tsmG40.Text = "G40";
-            this.tsmG40.Click += new System.EventHandler(this.tsmG40_Click);
             // 
             // tsmG5
             // 
@@ -774,6 +788,7 @@
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(80, 25);
             this.toolStripMenuItem1.Text = "Local ▼";
+            this.toolStripMenuItem1.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStripMenuItem1_DropDownItemClicked);
             // 
             // tsmLateral
             // 
@@ -799,10 +814,63 @@
             this.tsmTrazeiro.Size = new System.Drawing.Size(180, 26);
             this.tsmTrazeiro.Text = "trazeiro";
             // 
+            // dgvExporta
+            // 
+            this.dgvExporta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvExporta.Location = new System.Drawing.Point(0, 0);
+            this.dgvExporta.Name = "dgvExporta";
+            this.dgvExporta.RowTemplate.Height = 25;
+            this.dgvExporta.Size = new System.Drawing.Size(16, 16);
+            this.dgvExporta.TabIndex = 58;
+            this.dgvExporta.Visible = false;
+            // 
+            // menuStrip3
+            // 
+            this.menuStrip3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.menuStrip3.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmPPF});
+            this.menuStrip3.Location = new System.Drawing.Point(56, 425);
+            this.menuStrip3.Name = "menuStrip3";
+            this.menuStrip3.Size = new System.Drawing.Size(196, 29);
+            this.menuStrip3.TabIndex = 59;
+            this.menuStrip3.Text = "menuStrip3";
+            // 
+            // tsmPPF
+            // 
+            this.tsmPPF.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem3,
+            this.toolStripMenuItem4,
+            this.toolStripMenuItem5});
+            this.tsmPPF.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.tsmPPF.Name = "tsmPPF";
+            this.tsmPPF.Size = new System.Drawing.Size(68, 25);
+            this.tsmPPF.Text = "PPF ▼";
+            this.tsmPPF.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.tsmPPF_DropDownItemClicked);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 26);
+            this.toolStripMenuItem3.Text = "modelo 1";
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(180, 26);
+            this.toolStripMenuItem4.Text = "modelo 2";
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(180, 26);
+            this.toolStripMenuItem5.Text = "modelo 3";
+            // 
             // FrmCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.dgvExporta);
             this.Controls.Add(this.menuStrip2);
             this.Controls.Add(this.txtPlaca);
             this.Controls.Add(this.label15);
@@ -848,6 +916,7 @@
             this.Controls.Add(this.lblCodigo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.menuStrip3);
             this.Name = "FrmCliente";
             this.Size = new System.Drawing.Size(689, 541);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCliente)).EndInit();
@@ -857,6 +926,9 @@
             this.menuStrip1.PerformLayout();
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvExporta)).EndInit();
+            this.menuStrip3.ResumeLayout(false);
+            this.menuStrip3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -920,5 +992,11 @@
         private ToolStripMenuItem tsmFrontal;
         private ToolStripMenuItem tsmParabrisa;
         private ToolStripMenuItem tsmTrazeiro;
+        private DataGridView dgvExporta;
+        private MenuStrip menuStrip3;
+        private ToolStripMenuItem tsmPPF;
+        private ToolStripMenuItem toolStripMenuItem3;
+        private ToolStripMenuItem toolStripMenuItem4;
+        private ToolStripMenuItem toolStripMenuItem5;
     }
 }

@@ -13,7 +13,7 @@ using Microsoft.VisualBasic.Devices;
 using Microsoft.VisualBasic;
 using Xceed.Words.NET;
 using Word = Microsoft.Office.Interop.Word;
-
+using System.Linq.Expressions;
 
 namespace vinilCustom
 {
@@ -157,6 +157,25 @@ namespace vinilCustom
 
         }
 
+        //isso adiciona o texto do menu à área de serviço quando o item é clicado
+        private void tsmInsulfiml_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            txtServico.Text += e.ClickedItem.Text;
+            txtServico.Text += " ";
+        }
+
+        private void toolStripMenuItem1_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            txtServico.Text += e.ClickedItem.Text;
+            txtServico.Text += " ";
+        }
+
+        private void tsmPPF_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            txtServico.Text += e.ClickedItem.Text;
+            txtServico.Text += " ";
+        }
+
         private void desabilitaCampos()
         {
             btnNovo.Enabled =true;
@@ -263,9 +282,9 @@ namespace vinilCustom
                 MessageBox.Show("Obrigatório informar o campo NOME.", "ATENÇÃO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtNome.Focus();
             }
-            else if(txtEmail.Text == "")
+            else if ((!txtEmail.Text.Contains("@")) || (!txtEmail.Text.EndsWith(".com")) || (txtEmail.Text == ""))
             {
-                MessageBox.Show("Obrigatório informar o campo E-MAIL.", "ATENÇÃO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Obrigatório informar um E-MAIL válido.", "ATENÇÃO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtEmail.Focus();
             }
             else if (maskData.Text == "" || maskData.Text.Length < 8)
@@ -431,8 +450,31 @@ namespace vinilCustom
 
                     da.Fill(dt); //preenche o DataTable "dt"
 
-                    dgvCliente.DataSource = dt; //preenche o quadro "dgvFunc" com o conteúdo da tabela
-                    //dgvCliente.Columns[1].Visible = false;
+                    dgvCliente.DataSource = dt; //preenche o quadro "dgvCliente" com o conteúdo da tabela
+
+                    //oculta coluna
+                    dgvCliente.Columns[2].Visible = false;
+                    dgvCliente.Columns[3].Visible = false;
+                    dgvCliente.Columns[4].Visible = false;
+                    dgvCliente.Columns[5].Visible = false;
+                    dgvCliente.Columns[6].Visible = false;
+                    dgvCliente.Columns[7].Visible = false;
+                    dgvCliente.Columns[8].Visible = false;
+                    dgvCliente.Columns[9].Visible = false;
+                    dgvCliente.Columns[10].Visible = false;
+                    dgvCliente.Columns[11].Visible = false;
+                    dgvCliente.Columns[14].Visible = false;
+                    dgvCliente.Columns[15].Visible = false;
+                    dgvCliente.Columns[18].Visible = false;
+
+                    //renomeia coluna
+                    dgvCliente.Columns[0].HeaderText = "CÓDIGO";
+                    dgvCliente.Columns[1].HeaderText = "NOME";
+                    dgvCliente.Columns[12].HeaderText = "ID";
+                    dgvCliente.Columns[13].HeaderText = "DATA";
+                    dgvCliente.Columns[16].HeaderText = "VALOR";
+                    dgvCliente.Columns[17].HeaderText = "SERVIÇO";
+                    dgvCliente.Columns[17].AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
 
                     cn.Close();
 
@@ -517,9 +559,9 @@ namespace vinilCustom
                 MessageBox.Show("Obrigatório informar o campo NOME.", "ATENÇÃO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtNome.Focus();
             }
-            else if (txtEmail.Text == "")
+            else if ((!txtEmail.Text.Contains("@")) || (!txtEmail.Text.EndsWith(".com")) || (txtEmail.Text == ""))
             {
-                MessageBox.Show("Obrigatório informar o campo E-MAIL.", "ATENÇÃO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Obrigatório informar um E-MAIL válido.", "ATENÇÃO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtEmail.Focus();
             }
             else if (maskData.Text == "" || maskData.Text.Length < 8)
@@ -690,36 +732,64 @@ namespace vinilCustom
 
         private void exportar_Click(object sender, EventArgs e)
         {
-            if (dgvCliente.DataSource != null) {
+                try
+                {
+                cn.Open();
+                cm.CommandText = "select nm_Cliente, ds_Email from tbl_clientes";
+                cm.Connection = cn;
+
+                SqlDataAdapter da = new SqlDataAdapter();
+
+                DataTable dt = new DataTable();
+
+                da.SelectCommand = cm;
+
+                da.Fill(dt); //preenche o DataTable "dt"
+                
+
+                dgvExporta.DataSource = dt; //preenche o quadro "dgvCliente" com o conteúdo da tabela
+               
+                cn.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally { cn.Close(); }
+
+
+            if (dgvExporta.DataSource != null)
+            {
                 Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
                 Microsoft.Office.Interop.Excel.Workbook wb = app.Application.Workbooks.Add(1); //"nome" da planilha
                 Microsoft.Office.Interop.Excel.Worksheet ws = (Microsoft.Office.Interop.Excel.Worksheet)wb.Worksheets[1]; //planilha
 
-            int i = 0;
-            int j = 0;
+                int i = 0;
+                int j = 0;
 
 
-            for (int c = 1; c <= dgvCliente.Columns.Count; c++)
-                    //começando da coluna 1
-            {
+                for (int c = 1; c <= dgvExporta.Columns.Count; c++)
+                //começando da coluna 1
+                {
 
-                    ws.Cells[1, c] = dgvCliente.Columns[c - 1].HeaderText;
+                    ws.Cells[1, c] = dgvExporta.Columns[c - 1].HeaderText;
                     //coloca o cabeçalho da planilha na [linha 1, coluna 1], começa na posição 0 o primeiro nome
 
-            } 
+                }
 
-            // passa as celulas do DataGridView para a Pasta do Excel 
-            for (i = 0; i <= dgvCliente.RowCount - 1; i++)
-                    //enquanto o i for menor ou igua a quantidade de linhas, faz o loop
-            {
-
-                for (j = 0; j <= dgvCliente.ColumnCount - 1; j++)
+                // passa as celulas do DataGridView para a Pasta do Excel 
+                for (i = 0; i <= dgvExporta.RowCount - 1; i++)
+                //enquanto o i for menor ou igua a quantidade de linhas, faz o loop
                 {
-                    DataGridViewCell cell = dgvCliente[j, i];
+
+                    for (j = 0; j <= dgvExporta.ColumnCount - 1; j++)
+                    {
+                        DataGridViewCell cell = dgvExporta[j, i];
                         ws.Cells[i + 2, j + 1] = cell.Value;
                         //coloca o valor da [linha 2, coluna 1] no valor da celula
+                    }
                 }
-            }
                 app.Columns.AutoFit();
                 app.Visible = true;
             }
@@ -727,7 +797,42 @@ namespace vinilCustom
 
         private void imprimir_Click(object sender, EventArgs e)
         {
-            if (txtNome.Text != "" && maskCpf.Text != "" && maskData.Text != "" && txtPlaca.Text != "" && txtServico.Text != "" && cboGarantia.Text != "" && txtValor.Text != "")
+            if (txtNome.Text == "")
+            {
+                MessageBox.Show("Obrigatório informar o campo NOME.", "ATENÇÃO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtNome.Focus();
+            }
+            else if (maskData.Text == "" || maskData.Text.Length < 8)
+            {
+                MessageBox.Show("Obrigatório informar o campo DATA.", "ATENÇÃO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                maskData.Focus();
+            }
+            else if (txtPlaca.Text == "" || maskData.Text.Length < 7)
+            {
+                MessageBox.Show("Obrigatório informar o campo PLACA.", "ATENÇÃO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtPlaca.Focus();
+            }
+            else if (maskCpf.Text == "")
+            {
+                MessageBox.Show("Obrigatório informar o campo CPF.", "ATENÇÃO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                maskCpf.Focus();
+            }
+            else if (cboGarantia.Text == "")
+            {
+                MessageBox.Show("Obrigatório informar GARANTIA.", "ATENÇÃO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                cboGarantia.Focus();
+            }
+            else if (txtValor.Text == "")
+            {
+                MessageBox.Show("Obrigatório informar VALOR.", "ATENÇÃO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtValor.Focus();
+            }
+            else if (txtServico.Text == "")
+            {
+                MessageBox.Show("Obrigatório informar SERVIÇO.", "ATENÇÃO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtServico.Focus();
+            }
+            else
             {
 
                 string conteudoTxt, novoConteudoTxt;
@@ -782,10 +887,7 @@ namespace vinilCustom
                 }
                 catch (Exception ex) { MessageBox.Show(ex.Message); };
             }
-            else
-            {
-                MessageBox.Show("Verifique se os campos estão completos e tente novamente.");
-            }
+            
             //string caminho = @"C:\Programas\";
 
             //static void Replace()
@@ -805,17 +907,6 @@ namespace vinilCustom
             //}
         }
 
-        private void tsmG90_Click(object sender, EventArgs e)
-        {
-            txtServico.Text += tsmG90.Text;
-            txtServico.Text += " ";
-        }
-
-        private void tsmG40_Click(object sender, EventArgs e)
-        {
-            txtServico.Text += tsmG40.Text;
-            txtServico.Text += " ";
-        }
     }
 
 }

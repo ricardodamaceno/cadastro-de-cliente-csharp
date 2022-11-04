@@ -43,17 +43,17 @@
             this.btnSair = new System.Windows.Forms.Button();
             this.btnAcessar = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.cadAberto = new System.Windows.Forms.PictureBox();
-            this.txtSenha = new System.Windows.Forms.TextBox();
             this.btnSenha = new System.Windows.Forms.PictureBox();
+            this.txtSenha = new System.Windows.Forms.TextBox();
+            this.cadAberto = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cadAberto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSenha)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cadAberto)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -75,7 +75,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.SystemColors.Window;
-            this.label4.Location = new System.Drawing.Point(110, 280);
+            this.label4.Location = new System.Drawing.Point(73, 274);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(151, 30);
             this.label4.TabIndex = 4;
@@ -86,7 +86,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.SystemColors.Window;
-            this.label3.Location = new System.Drawing.Point(127, 477);
+            this.label3.Location = new System.Drawing.Point(144, 504);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(125, 17);
             this.label3.TabIndex = 3;
@@ -97,7 +97,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.SystemColors.Window;
-            this.label2.Location = new System.Drawing.Point(147, 450);
+            this.label2.Location = new System.Drawing.Point(155, 478);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(114, 17);
             this.label2.TabIndex = 2;
@@ -108,11 +108,11 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.SystemColors.Window;
-            this.label1.Location = new System.Drawing.Point(64, 310);
+            this.label1.Location = new System.Drawing.Point(27, 304);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(197, 30);
+            this.label1.Size = new System.Drawing.Size(251, 30);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Sistema de vinilCustom";
+            this.label1.Text = "Sistema de Vinil Custom";
             // 
             // pictureBox1
             // 
@@ -235,26 +235,6 @@
             this.panel4.Size = new System.Drawing.Size(450, 40);
             this.panel4.TabIndex = 7;
             // 
-            // cadAberto
-            // 
-            this.cadAberto.Image = global::vinilCustom.Properties.Resources.silhueta_de_cadeado_aberto;
-            this.cadAberto.Location = new System.Drawing.Point(6, 6);
-            this.cadAberto.Name = "cadAberto";
-            this.cadAberto.Size = new System.Drawing.Size(30, 30);
-            this.cadAberto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.cadAberto.TabIndex = 11;
-            this.cadAberto.TabStop = false;
-            this.cadAberto.Visible = false;
-            // 
-            // txtSenha
-            // 
-            this.txtSenha.Location = new System.Drawing.Point(42, 7);
-            this.txtSenha.MaxLength = 8;
-            this.txtSenha.Name = "txtSenha";
-            this.txtSenha.Size = new System.Drawing.Size(396, 23);
-            this.txtSenha.TabIndex = 10;
-            this.txtSenha.UseSystemPasswordChar = true;
-            // 
             // btnSenha
             // 
             this.btnSenha.Image = global::vinilCustom.Properties.Resources.key;
@@ -266,6 +246,26 @@
             this.btnSenha.TabStop = false;
             this.btnSenha.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnSenha_MouseDown);
             this.btnSenha.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnSenha_MouseUp);
+            // 
+            // txtSenha
+            // 
+            this.txtSenha.Location = new System.Drawing.Point(42, 7);
+            this.txtSenha.MaxLength = 8;
+            this.txtSenha.Name = "txtSenha";
+            this.txtSenha.Size = new System.Drawing.Size(396, 23);
+            this.txtSenha.TabIndex = 10;
+            this.txtSenha.UseSystemPasswordChar = true;
+            // 
+            // cadAberto
+            // 
+            this.cadAberto.Image = global::vinilCustom.Properties.Resources.silhueta_de_cadeado_aberto;
+            this.cadAberto.Location = new System.Drawing.Point(6, 6);
+            this.cadAberto.Name = "cadAberto";
+            this.cadAberto.Size = new System.Drawing.Size(30, 30);
+            this.cadAberto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.cadAberto.TabIndex = 11;
+            this.cadAberto.TabStop = false;
+            this.cadAberto.Visible = false;
             // 
             // login
             // 
@@ -289,8 +289,8 @@
             this.panel2.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cadAberto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSenha)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cadAberto)).EndInit();
             this.ResumeLayout(false);
 
         }
